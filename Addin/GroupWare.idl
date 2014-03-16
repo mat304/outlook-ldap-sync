@@ -1,0 +1,43 @@
+// GroupWare.idl : IDL source for GroupWare.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (GroupWare.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+
+// HKCR/Interface 
+   [
+		object,
+		uuid(4a650143-0103-4633-8a2a-7a28944eb049),
+		dual,
+		helpstring("IAddin Interface"),
+		pointer_default(unique)
+	]
+	interface IAddin : IDispatch
+	{
+	};
+
+// HKCR/TypeLib
+[
+	uuid(a5cca5ae-51a3-46f5-a3ae-4fe8d84ddfa3),
+	version(1.0),
+	helpstring("GroupWare 1.0 Type Library")
+]
+library GROUPWARELib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	// HKCR/CLSID
+	[
+		uuid(b33767cf-240a-4ec5-a978-ae685707ba6c),
+		helpstring("GroupWare.Addin")
+	]
+	coclass Addin
+	{
+		[default] interface IAddin;
+	};
+};

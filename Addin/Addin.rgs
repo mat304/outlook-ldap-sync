@@ -1,0 +1,34 @@
+HKCR
+{
+	NoRemove 'AppID'
+	{
+		'GroupWare.dll'
+		{
+			val 'AppID' = s '{af4a77a9-89a1-4d50-abcd-a6fbbddafa9c}' 
+		}
+	}
+	'GroupWare.Addin.1' = s 'GroupWare.Addin'
+	{
+		'CLSID' = s '{b33767cf-240a-4ec5-a978-ae685707ba6c}'
+	}
+	'GroupWare.Addin' = s 'GroupWare.Addin'
+	{
+		'CLSID' = s '{b33767cf-240a-4ec5-a978-ae685707ba6c}'
+		'CurVer' = s 'GroupWare.Addin.1'
+	}
+	NoRemove 'CLSID'
+	{
+		ForceRemove '{b33767cf-240a-4ec5-a978-ae685707ba6c}' = s 'GroupWare Addin'
+		{
+			val 'AppID' = s 'GroupWare.dll'
+			'ProgID' = s 'GroupWare.Addin.1'
+			'VersionIndependentProgID' = s 'GroupWare.Addin'
+			ForceRemove 'Programmable'
+			'InprocServer32' = s '"%MODULE%"'
+			{
+				val 'ThreadingModel' = s 'Apartment'
+			}
+			'TypeLib' = s '{a5cca5ae-51a3-46f5-a3ae-4fe8d84ddfa3}'
+		}
+	}
+}

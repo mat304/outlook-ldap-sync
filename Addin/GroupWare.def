@@ -1,0 +1,9 @@
+; GroupWare.def : Declares the module parameters.
+
+LIBRARY      "GroupWare.DLL"
+
+EXPORTS
+	DllCanUnloadNow     PRIVATE
+	DllGetClassObject   PRIVATE
+	DllRegisterServer   PRIVATE
+	DllUnregisterServer	PRIVATE

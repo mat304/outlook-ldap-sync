@@ -1,0 +1,53 @@
+HKCR
+{
+	GroupWare_Shim.Connect.1 = s 'ConnectProxy Class'
+	{
+		CLSID = s '{d7d15dd3-43b5-43d7-a1bf-e9a9c8ea56a6}'
+	}
+	GroupWare_Shim.Connect = s 'ConnectProxy Class'
+	{
+		CLSID = s '{d7d15dd3-43b5-43d7-a1bf-e9a9c8ea56a6}'
+		CurVer = s 'GroupWare_Shim.Connect.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove '{d7d15dd3-43b5-43d7-a1bf-e9a9c8ea56a6}' = s 'ConnectProxy Class'
+		{
+			ProgID = s 'GroupWare_Shim.Connect.1'
+			VersionIndependentProgID = s 'GroupWare_Shim.Connect'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}
+HKCU
+{
+    NoRemove Software
+    {
+        NoRemove Microsoft
+        {
+            NoRemove Office
+            {
+                NoRemove Outlook
+                {
+                    NoRemove Addins
+                    {
+                        ForceRemove GroupWare_Shim.Connect 
+                                {
+                                     val 'Description' = s 'Security shim for GroupWare'
+                                     val 'FriendlyName' = s 'GroupWare_Shim'
+                                     val 'LoadBehavior' = d 3
+                                }
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
